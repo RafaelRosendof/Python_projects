@@ -40,7 +40,7 @@ torch.cuda.empty_cache()
 
 model = timm.create_model(MODEL_NAME, pretrained=True, num_classes=CLASSES)
 
-model = model.to('cuda' + str(local_rank))
+model = model.to('cuda:' + str(local_rank))
 
 my_auto = functools.partial(size_based_auto_wrap_policy, min_num_params = 20000)
 

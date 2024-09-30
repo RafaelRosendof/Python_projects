@@ -34,7 +34,7 @@ torch.cuda.set_device(local_rank)
 torch.cuda.empty_cache()
 model = timm.create_model(MODEL_NAME, pretrained=True, num_classes=CLASSES)
 
-model = model.to('cuda' + str(local_rank))
+model = model.to('cuda:' + str(local_rank))
 model = DDP(model , device_ids=[local_rank])
 
 loss_fn = nn.CrossEntropyLoss()
